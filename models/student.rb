@@ -24,34 +24,41 @@ class Student
     @id = student_data.first()['id'].to_i
   end
 
-  # def update()
-  #   sql = "UPDATE students SET
-  #     first_name = '#{ @first_name }',
-  #     second_name = '#{ @second_name }',
-  #     house_id = '#{ @house_id }',
-  #     age = #{ @age }
-  #     WHERE id = '#{ @id }';"
-  #   SqlRunner.run( sql )
-  # end
+  def update()
+    sql = "UPDATE students SET
+      first_name = '#{ @first_name }',
+      second_name = '#{ @second_name }',
+      house_id = '#{ @house_id }',
+      age = #{ @age }
+      WHERE id = '#{ @id }';"
+    SqlRunner.run( sql )
+  end
 
-  # def delete()
-  #   sql = "DELETE FROM students WHERE id=#{ @id };"
-  #   SqlRunner.run( sql )
-  # end
+  def delete()
+    sql = "DELETE FROM students WHERE id=#{ @id };"
+    SqlRunner.run( sql )
+  end
 
-  # def Student.all()
-  #   sql = "SELECT * FROM students;"
-  #   students = SqlRunner.run( sql )
-  #   result = students.map { |student| Student.new( student ) }
-  #   return result
-  # end
+  def houses()
+    sql = "SELECT * FROM houses 
+    WHERE id = #{@house_id}"
+    houses = SqlRunner.run(sql)
+    return houses.map { |house| House.new(house) }
+  end
 
-  # def Student.find( id )
-  #   sql = "SELECT * FROM students WHERE id=#{id};"
-  #   student = SqlRunner.run( sql )
-  #   result = Student.new( student.first )
+  def Student.all()
+    sql = "SELECT * FROM students;"
+    students = SqlRunner.run( sql )
+    result = students.map { |student| Student.new( student ) }
+    return result
+  end
 
-  #   return result
-  # end
+  def Student.find( id )
+    sql = "SELECT * FROM students WHERE id=#{id};"
+    student = SqlRunner.run( sql )
+    result = Student.new( student.first )
+
+    return result
+  end
 
 end
