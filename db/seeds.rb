@@ -35,5 +35,9 @@ house4 = House.new({
   "name" => "Hufflepuff",
   "logo_url" => "https://vignette1.wikia.nocookie.net/harrypotter/images/6/62/Download_%289%29.jpg/revision/latest?cb=20160729145653"
   })
+house1.save
+house2.save
+house3.save
+house4.save
 binding.pry
 nil
