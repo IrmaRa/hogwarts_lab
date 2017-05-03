@@ -8,10 +8,10 @@
 
   <label for="house-select">Select Your House:</label>
   <select id="house-select" name="house">
-    <option value="Gryffindor">Gryffindor</option> 
-    <option value="Ravenclaw">Ravenclaw</option>
-    <option value="Hufflepuff">Hufflepuff</option> 
-    <option value="Slytherin">Slytherin</option>
+    <option value="Gryffindor" <%= 'selected' if @student.house_id == "Gryffindor"%> >Gryffindor</option> 
+    <option value="Ravenclaw" <%= 'selected' if @student.house_id == "Ravenclaw"%> >Ravenclaw</option>
+    <option value="Hufflepuff" <%= 'selected' if @student.house_id == "Hufflepuff"%> >Hufflepuff</option> 
+    <option value="Slytherin" <%= 'selected' if @student.house_id == "Slytherin"%> >Slytherin</option>
 
   </select>
 

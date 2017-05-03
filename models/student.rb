@@ -1,4 +1,5 @@
 require_relative('../db/sql_runner')
+require_relative('./house')
 
 class Student
 
@@ -19,18 +20,18 @@ class Student
 
   def save()
     sql = "INSERT INTO students ( first_name, second_name, house_id, age ) VALUES ('#{ @first_name }','#{ @second_name }', '#{ @house_id }', #{ @age }) 
-      RETURNING *;"
+    RETURNING *;"
     student_data = SqlRunner.run(sql)
     @id = student_data.first()['id'].to_i
   end
 
   def update()
     sql = "UPDATE students SET
-      first_name = '#{ @first_name }',
-      second_name = '#{ @second_name }',
-      house_id = '#{ @house_id }',
-      age = #{ @age }
-      WHERE id = '#{ @id }';"
+    first_name = '#{ @first_name }',
+    second_name = '#{ @second_name }',
+    house_id = '#{ @house_id }',
+    age = #{ @age }
+    WHERE id = '#{ @id }';"
     SqlRunner.run( sql )
   end
 
@@ -39,12 +40,14 @@ class Student
     SqlRunner.run( sql )
   end
 
-  def houses()
+  def house()
     sql = "SELECT * FROM houses 
     WHERE id = #{@house_id}"
-    houses = SqlRunner.run(sql)
-    return houses.map { |house| House.new(house) }
+    house = SqlRunner.run(sql)
+    result = House.new( house.first )
+    return result
   end
+
 
   def Student.all()
     sql = "SELECT * FROM students;"
@@ -57,7 +60,6 @@ class Student
     sql = "SELECT * FROM students WHERE id=#{id};"
     student = SqlRunner.run( sql )
     result = Student.new( student.first )
-
     return result
   end
 
