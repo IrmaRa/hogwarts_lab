@@ -19,7 +19,7 @@ class Student
   end
 
   def save()
-    sql = "INSERT INTO students ( first_name, second_name, house_id, age ) VALUES ('#{ @first_name }','#{ @second_name }', '#{ @house_id }', #{ @age }) 
+    sql = "INSERT INTO students ( first_name, second_name, house_id, age ) VALUES ('#{ @first_name }','#{ @second_name }', #{ @house_id }, #{ @age }) 
     RETURNING *;"
     student_data = SqlRunner.run(sql)
     @id = student_data.first()['id'].to_i

@@ -13,7 +13,7 @@ class House
 
   def save()
     sql = "INSERT INTO houses ( name, logo_url ) VALUES ('#{ @name }','#{ @logo_url }') 
-      RETURNING *;"
+    RETURNING *;"
     house_data = SqlRunner.run(sql)
     @id = house_data.first()['id'].to_i
   end
