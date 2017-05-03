@@ -2,23 +2,6 @@ require_relative('../models/student')
 require_relative('../models/house')
 require('pry-byebug')
 
-student1 = Student.new({
-  "first_name" => "Harry",
-  "second_name" => "Potter",
-  "house" => "Gryffindor",
-  "age" => 16
-  })
-
-student2 = Student.new({
-  "first_name" => "Draco",
-  "second_name" => "Malfoy",
-  "house" => "Slytherin",
-  "age" => 17
-  })
-
-student1.save
-student2.save
-
 house1 = House.new({
   "name" => "Gryffindor",
   "logo_url" => "https://vignette2.wikia.nocookie.net/harrypotter/images/e/ee/Gryffindor_Crest-0.jpg/revision/latest?cb=20160729145529"  
@@ -39,5 +22,24 @@ house1.save
 house2.save
 house3.save
 house4.save
+
+student1 = Student.new({
+  "first_name" => "Harry",
+  "second_name" => "Potter",
+  "house_id" => house1.id,
+  "age" => 16
+  })
+
+student2 = Student.new({
+  "first_name" => "Draco",
+  "second_name" => "Malfoy",
+  "house_id" => house2.id,
+  "age" => 17
+  })
+
+
+student1.save
+student2.save
+
 binding.pry
 nil
